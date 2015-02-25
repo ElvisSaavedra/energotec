@@ -27,6 +27,10 @@
 ///
 /// @output `border-radius`
 
+@mixin border-radius($radii) {
+	border-radius: $radii;
+}
+
 @mixin border-top-radius($radii) {
   border-top-left-radius: $radii;
   border-top-right-radius: $radii;

@@ -1,0 +1,46 @@
+.intro {
+  background-color: yellow;
+  background-color: #000;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  color: #fff;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  padding-top: 60px;
+  text-align: center;
+  width: 100%;
+
+  .intro-body {
+
+    .brand-heading {
+      font-size: 40px;
+    }
+
+    .intro-text {
+      font-size: 18px;
+    }
+  }
+
+  @include media($medium-screen) {
+
+    height: 100%;
+    padding: 0;
+
+    .brand-heading {
+      font-size: 100px;
+    }
+
+    .intro-text {
+      font-size: 26px;
+    }
+
+  }
+
+}
+
+.content-section {
+  height: 500px;
+}

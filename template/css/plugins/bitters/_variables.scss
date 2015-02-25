@@ -16,6 +16,10 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
+
+$red: #f10202;
+$red-dark: #a60404;
+
 $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
@@ -24,6 +28,7 @@ $light-gray: #ddd;
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
+$base-accent-color: $blue;
 $action-color: $blue;
 
 // Border
