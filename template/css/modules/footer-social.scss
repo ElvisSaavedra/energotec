@@ -1,0 +1,31 @@
+ul.footer-social {
+  margin-top: 20px;
+  @include media($medium-screen) {
+    float: right;
+    margin-top: 0;
+  }
+
+  li {
+    float: left;
+    line-height: 32px;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      @include border-radius(50%);
+      background-color: $red;
+      display: block;
+      height: 32px;
+      opacity: 1;
+      text-align: center;
+      width: 32px;
+      &:hover {
+        background-color: $red-dark;
+      }
+    }
+
+  }
+}

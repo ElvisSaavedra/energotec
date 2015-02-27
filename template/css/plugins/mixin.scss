@@ -1,0 +1,56 @@
+@mixin opacity($alpha) {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $alpha * 100 + ")";
+  filter: alpha(opacity=$alpha*100);
+  -webkit-opacity: $alpha;
+  -moz-opacity: $alpha;
+  -khtml-opacity: $alpha;
+  opacity: $alpha;
+}
+
+@mixin border-radius($radii) {
+  border-radius: $radii;
+  -webkit-border-radius: $radii;
+  -moz-border-radius: $radii;
+  -o-border-radius: $radii;
+}
+
+@mixin text-shadow($text) {
+  text-shadow: $text;
+}
+
+@mixin button($base-color) {
+
+  $color: $white;
+  $border: #a60404;
+  $padding: 12px 18px;
+
+  background-color: $base-color;
+  box-shadow: 0 5px 0 $border;
+  border-radius: 0;
+  color: $white;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: $padding;
+  min-height: 48px;
+  text-decoration: none;
+  background-clip: padding-box;
+  @include transition(all 0.2s ease 0s);
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:hover:not(:disabled) {
+    $stop-gradient-hover: adjust-color($base-color, $saturation:  9%, $lightness: -4%);
+    background-color: $stop-gradient-hover;
+    cursor: pointer;
+  }
+
+  &:focus:not(:disabled) {
+  }
+
+  &:active:not(:disabled) {
+    @include transform(translate(0px, 5px));
+    box-shadow: none;
+  }
+}

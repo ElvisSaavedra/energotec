@@ -20,21 +20,60 @@
 }
 
 .slides-navigation {
+  display: none;
   margin: 0 auto;
   position: absolute;
   z-index: 3;
-  top: 46%;
+  top: 44%;
   width: 100%;
 }
 .slides-navigation a {
+  color: white;
+  display: none;
+  font-size: 80px;
   position: absolute;
-  display: block;
+  @include text-shadow(2px 1px 2px #000);
+  &:hover {
+    color: $red;
+  }
+  @include media($medium-screen) {
+    display: block;
+  }
 }
 .slides-navigation a.prev {
-  left: 0;
+  left: 35px;
 }
 .slides-navigation a.next {
-  right: 0;
+  right: 90px;
+}
+
+.slide-container {
+  @include text-shadow(1px 2px 1px #000);
+  bottom: 130px;
+  padding: 10px 20px;
+  position: absolute;
+  @include media($medium-screen) {
+    padding: 0;
+    left: 6%;
+    right: 6%;
+    bottom: 10%;
+  }
+  h2 {
+    font-size: 32px;
+    font-family: $helvetica;
+    @include media($medium-screen) {
+      font-size: 48px;
+      margin-bottom: 0;
+    }
+  }
+  p {
+    font-family: $helvetica;
+    font-size: 20px;
+    font-weight: 300;
+    @include media($medium-screen) {
+      font-size: 30px;
+    }
+  }
 }
 
 .slides-pagination {
@@ -80,22 +119,8 @@
   top: -15px;
   @include animation(pulsate 1s ease-out);
   @include animation-iteration-count(infinite);
-  // -webkit-animation:   ;
-  // -webkit-animation: pulsate 1s ease-out;
-  // -moz-animation: pulsate 1s ease-out;
-  // -o-animation: pulsate 1s ease-out;
-  // animation: pulsate 1s ease-out;
-  // -webkit-animation-iteration-count: infinite;
-  // -moz-animation-iteration-count: infinite;
-  // -o-animation-iteration-count: infinite;
-  // animation-iteration-count: infinite;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
-  border-radius: 30px;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+  @include border-radius(30px);
+  @include opacity(0);
 }
 
 @include keyframes(pulsate) {
@@ -113,118 +138,3 @@
     opacity: 0;
   }
 }
-
-// @-webkit-keyframes pulsate {
-//     0% {
-//         -webkit-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }    
-//     50% {
-//         -webkit-transform: scale(1, 1);
-//         opacity: 1.0;
-//     }    
-//     100% {
-//         -webkit-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }
-// }
-// @-moz-keyframes pulsate {
-//     0% {
-//         -moz-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }    
-//     50% {
-//         -moz-transform: scale(1, 1);
-//         opacity: 1.0;
-//     }    
-//     100% {
-//         -moz-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }
-// }
-// @-ms-keyframes pulsate {
-//     0% {
-//         -ms-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }    
-//     50% {
-//         -ms-transform: scale(1, 1);
-//         opacity: 1.0;
-//     }    
-//     100% {
-//         -ms-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }
-// }
-// @-o-keyframes pulsate {
-//     0% {
-//         -o-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }    
-//     50% {
-//         -o-transform: scale(1, 1);
-//         opacity: 1.0;
-//     }    
-//     100% {
-//         -o-transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }
-// }
-// @keyframes pulsate {
-//     0% {
-//         transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }    
-//     50% {
-//         transform: scale(1, 1);
-//         opacity: 1.0;
-//     }    
-//     100% {
-//         transform: scale(0.8, 0.8);
-//         opacity: 0.3;
-//     }
-// }
-
-// @-webkit-keyframes pulsate {
-//   from {
-//     -webkit-transform: scale(0.1, 0.1); }
-
-//   to {
-//     -webkit-transform: scale(1.2, 1.2); } }
-
-// @-moz-keyframes pulsate {
-//   from {
-//     -moz-transform: scale(0.1, 0.1); }
-
-//   to {
-//     -moz-transform: scale(1.2, 1.2); } }
-
-// @-o-keyframes pulsate {
-//   from {
-//     -o-transform: scale(0.1, 0.1); }
-
-//   to {
-//     -o-transform: scale(1.2, 1.2); } }
-
-// @keyframes pulsate {
-//   from {
-//     transform: scale(0.1, 0.1); }
-
-//   to {
-//     transform: scale(1.2, 1.2); } }
-
-// @-webkit-keyframes pulsate {
-//   0% {
-//     -webkit-transform: scale(0.1, 0.1);
-//     opacity: 0.0;
-//   }
-
-//   50% {
-//     opacity: 1.0;
-//   }
-
-//   100% {
-//     -webkit-transform: scale(1.2, 1.2);
-//     opacity: 0.0;
-//   }
-// }

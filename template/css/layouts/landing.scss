@@ -1,16 +1,10 @@
 .intro {
-  background-color: yellow;
   background-color: #000;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
   color: #fff;
   display: block;
-  height: auto;
+  height: 100%;
   overflow: hidden;
-  padding-top: 60px;
-  text-align: center;
+  padding-top: 0;
   width: 100%;
 
   .intro-body {
@@ -24,23 +18,84 @@
     }
   }
 
-  @include media($medium-screen) {
-
-    height: 100%;
-    padding: 0;
-
-    .brand-heading {
-      font-size: 100px;
-    }
-
-    .intro-text {
-      font-size: 26px;
-    }
-
-  }
-
 }
 
 .content-section {
   height: 500px;
 }
+
+.bg-shadow {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+.intro-bottom {
+  position: absolute;
+  bottom: 24px;
+  z-index: 5;
+  padding: 0 20px;
+  @include media($medium-screen) {
+    left: 6%;
+    right: 6%;
+    padding: 0;
+  }
+}
+
+.intro-right {
+  @include media($medium-screen) {
+    display: block;
+  }
+  display: none;
+  margin-top: -85px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 5;
+  .button {
+    display: block;
+    height: 55px;
+    padding: 11px;
+    text-align: center;
+    width: 55px;
+    .fa {
+      font-size: 30px;
+    }
+  }
+}
+
+.view-sect2 {
+  @include media($medium-screen) {
+    display: table;
+  }
+  bottom: -47px;
+  display: none;
+  left: 50%;
+  margin-left: -40px;
+  position: absolute;
+  .down-arrow {
+    background-image: url('images/down-arrow.png');
+    background-position: 0 0;
+    display: block;
+    float: left;
+    height: 86px;
+    width: 80px;
+    &:hover {
+      background-position: 0 -86px;
+    }
+    &:active {
+      background-position: 0 -172px;
+    }
+    &:focus {
+
+    }
+  }
+  > div {
+    float: right;
+    line-height: 63px;
+    margin-left: 20px;
+  }
+}
+

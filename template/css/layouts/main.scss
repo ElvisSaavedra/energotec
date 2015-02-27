@@ -2,3 +2,29 @@ body, html {
     width: 100%;
     height: 100%;
 }
+
+.container {
+  @include outer-container;
+}
+
+.btn {
+  @include button($red);
+
+  .fa {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  &.only {
+    .fa {
+      margin-left: 0;
+    }
+  }
+}
+
+.button {
+  @include btn($red);
+}
+
+.relative {
+  position: relative;
+}

@@ -14,12 +14,16 @@
   %script{:type => "text/javascript", :src  => "js/main.js"}
 
   %link{:rel => "stylesheet", :href => "style.css"}
+  %link{:rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic", :type => "text/css"}
 
   %body#page-top
     %header.navigation{:role => "banner"}
+      .header-bg-left.js-bg-left
       .navigation-wrapper
-        %a.logo{:href => "javascript:void(0)"}
-          %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png", :alt => "Logo Image"}
+        .wrapper-logo
+          .content-logo
+            %a.logo{:href => "javascript:void(0)"}
+              %img{:src => "images/energotec-logo.png", :alt => "Logo Image"}
         %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
         %nav{:role => "navigation"}
           %ul#js-navigation-menu.navigation-menu.show
@@ -35,8 +39,12 @@
               %a{:href => "javascript:void(0)"} Servicios
               %ul.submenu
                 - (1..5).each do |i|
-                  %li
+                  %li.more
                     %a{:href => "javascript:void(0)"} Submenu Item #{i}
+                    %ul.submenu
+                      - (1..3).each do |i|
+                        %li
+                          %a{:href => "javascript:void(0)"} Sub Sub Item #{i}
             %li.nav-link
               %a{:href => "javascript:void(0)"} Marcas
             %li.nav-link
@@ -51,13 +59,48 @@
         .loading-container
           .pulse
         #slides
-          .slides-container
+
+          %ul.slides-container
             - (1..3).each do |i|
-              %img{:src => "images/landing-#{i}.jpg"}
+              %li
+                %img{:src => "images/landing-#{i}.jpg"}
+                .slide-container
+                  %h2 Lorem ipsum ad his scripta blandit partiendo #{i}
+                  %p Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id #{i}
 
           %nav.slides-navigation
-            %a.next{:href => "#"} Next
-            %a.prev{:href => "#"} Prev
+            %a.fa.fa-angle-left.prev{:href => "#"}
+            %a.fa.fa-angle-right.next{:href => "#"}
+
+        .intro-bottom
+          .relative
+            %a.btn{:href => "javascript:void(0)"}
+              VER PRODUCTOS
+              %i.fa.fa-angle-right
+
+            %ul.footer-social
+              %li
+                %span SÍGUENOS
+              %li
+                %a{:href => "javascript:void(0)"}
+                  %i.fa.fa-facebook
+              %li
+                %a{:href => "javascript:void(0)"}
+                  %i.fa.fa-twitter
+
+            .view-sect2
+              %a.down-arrow{:href => "javascript:void(0)"}
+              %div Click para deslizar hacia abajo
+
+        .intro-right
+          %a.button{:href => "javascript:void(0)"}
+            %i.fa.fa-bus
+          %a.button{:href => "javascript:void(0)"}
+            %i.fa.fa-check
+          %a.button{:href => "javascript:void(0)"}
+            %i.fa.fa-gear
+          %a.button{:href => "javascript:void(0)"}
+            %i.fa.fa-child
 
     %section.content-section
       contenido 2
@@ -66,4 +109,4 @@
       contenido 3
 
     %section.content-section
-      contenido 4file:///Users/teclalabs/GitHub/Energotec/template/images/landing-2.jpg
+      contenido 4

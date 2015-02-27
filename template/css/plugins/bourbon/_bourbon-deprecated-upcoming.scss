@@ -6,7 +6,7 @@
   @warn "The inline-block mixin is deprecated and will be removed in the next major version release";
 }
 
-@mixin button ($style: simple, $base-color: #4294f0, $text-size: inherit, $padding: 7px 18px) {
+@mixin btn ($style: simple, $base-color: #4294f0, $text-size: inherit, $padding: 7px 18px) {
 
   @if type-of($style) == string and type-of($base-color) == color {
     @include buttonstyle($style, $base-color, $text-size, $padding);
@@ -56,15 +56,15 @@
     @include buttonstyle($style, $base-color, $text-size, $padding);
   }
 
-  &:disabled {
-    cursor: not-allowed;
+  &:disabled, &.disabled {
     opacity: 0.5;
+    cursor: not-allowed;
   }
-
-  @warn "The button mixin is deprecated and will be removed in the next major version release";
 }
 
+
 // Selector Style Button
+//************************************************************************//
 @mixin buttonstyle($type, $b-color, $t-size, $pad) {
   // Grayscale button
   @if $type == simple and $b-color == grayscale($b-color) {
@@ -101,7 +101,9 @@
   }
 }
 
+
 // Simple Button
+//************************************************************************//
 @mixin simple($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
   $border:        adjust-color($base-color, $saturation:  9%,  $lightness: -14%);
@@ -121,14 +123,17 @@
     $text-shadow:   grayscale($text-shadow);
   }
 
-  border: 1px solid $border;
-  border-radius: 3px;
-  box-shadow: inset 0 1px 0 0 $inset-shadow;
+  // border: 1px solid $border;
+  // border-radius: 3px;
+  // box-shadow: inset 0 1px 0 0 $inset-shadow;
+  // @include linear-gradient ($base-color, $stop-gradient);
+  background-color: $base-color;
+  border-top: 1px solid $inset-shadow;
+  border-bottom: 1px solid $stop-gradient;
   color: $color;
   display: inline-block;
   font-size: $textsize;
   font-weight: bold;
-  @include linear-gradient ($base-color, $stop-gradient);
   padding: $padding;
   text-decoration: none;
   text-shadow: 0 1px 0 $text-shadow;
@@ -137,7 +142,7 @@
   &:hover:not(:disabled) {
     $base-color-hover:    adjust-color($base-color, $saturation: -4%, $lightness: -5%);
     $inset-shadow-hover:  adjust-color($base-color, $saturation: -7%, $lightness:  5%);
-    $stop-gradient-hover: adjust-color($base-color, $saturation:  8%, $lightness: -14%);
+    $stop-gradient-hover: adjust-color($base-color, $saturation:  9%, $lightness: -11%);
 
     @if $grayscale == true {
       $base-color-hover:    grayscale($base-color-hover);
@@ -145,14 +150,14 @@
       $stop-gradient-hover: grayscale($stop-gradient-hover);
     }
 
-    @include linear-gradient ($base-color-hover, $stop-gradient-hover);
-
-    box-shadow: inset 0 1px 0 0 $inset-shadow-hover;
+    // box-shadow: inset 0 1px 0 0 $inset-shadow-hover;
+    background-color: $stop-gradient-hover;
+    border-top-color: $stop-gradient-hover;
     cursor: pointer;
+    // @include linear-gradient ($base-color-hover, $stop-gradient-hover);
   }
 
-  &:active:not(:disabled),
-  &:focus:not(:disabled) {
+  &:active:not(:disabled) {
     $border-active:       adjust-color($base-color, $saturation: 9%, $lightness: -14%);
     $inset-shadow-active: adjust-color($base-color, $saturation: 7%, $lightness: -17%);
 
@@ -161,12 +166,19 @@
       $inset-shadow-active: grayscale($inset-shadow-active);
     }
 
-    border: 1px solid $border-active;
+    // border: 1px solid $border-active;
     box-shadow: inset 0 0 8px 4px $inset-shadow-active, inset 0 0 8px 4px $inset-shadow-active;
   }
+
+  &:focus:not(:disabled) {
+    
+  }
+
 }
 
+
 // Shiny Button
+//************************************************************************//
 @mixin shiny($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
   $border:        adjust-color($base-color, $red: -117, $green: -111, $blue: -81);
@@ -192,16 +204,15 @@
     $third-stop:    grayscale($third-stop);
   }
 
-  @include linear-gradient(top, $base-color 0%, $second-stop 50%, $third-stop 50%, $fourth-stop 100%);
-
   border: 1px solid $border;
   border-bottom: 1px solid $border-bottom;
-  border-radius: 5px;
+  // border-radius: 5px;
   box-shadow: inset 0 1px 0 0 $inset-shadow;
   color: $color;
   display: inline-block;
   font-size: $textsize;
   font-weight: bold;
+  @include linear-gradient(top, $base-color 0%, $second-stop 50%, $third-stop 50%, $fourth-stop 100%);
   padding: $padding;
   text-align: center;
   text-decoration: none;
@@ -220,11 +231,11 @@
       $fourth-stop-hover: grayscale($fourth-stop-hover);
     }
 
+    cursor: pointer;
     @include linear-gradient(top, $first-stop-hover  0%,
                                   $second-stop-hover 50%,
                                   $third-stop-hover  50%,
                                   $fourth-stop-hover 100%);
-    cursor: pointer;
   }
 
   &:active:not(:disabled),
@@ -239,7 +250,9 @@
   }
 }
 
+
 // Pill Button
+//************************************************************************//
 @mixin pill($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
   $border-bottom: adjust-color($base-color, $hue:  8, $saturation: -11%, $lightness: -26%);
@@ -265,7 +278,7 @@
 
   border: 1px solid $border-top;
   border-color: $border-top $border-sides $border-bottom;
-  border-radius: 16px;
+  // border-radius: 16px;
   box-shadow: inset 0 1px 0 0 $inset-shadow;
   color: $color;
   display: inline-block;
@@ -298,14 +311,13 @@
       $text-shadow-hover:   grayscale($text-shadow-hover);
     }
 
-    @include linear-gradient ($base-color-hover, $stop-gradient-hover);
-
-    background-clip: padding-box;
     border: 1px solid $border-top;
     border-color: $border-top $border-sides $border-bottom;
     box-shadow: inset 0 1px 0 0 $inset-shadow-hover;
     cursor: pointer;
+    @include linear-gradient ($base-color-hover, $stop-gradient-hover);
     text-shadow: 0 -1px 1px $text-shadow-hover;
+    background-clip: padding-box;
   }
 
   &:active:not(:disabled),
@@ -332,7 +344,10 @@
   }
 }
 
+
+
 // Flat Button
+//************************************************************************//
 @mixin flat($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
   $color:         hsl(0, 0, 100%);
 
@@ -341,13 +356,13 @@
   }
 
   background-color: $base-color;
-  border-radius: 3px;
-  border: 0;
+  // border-radius: 3px;
+  border: none;
   color: $color;
   display: inline-block;
-  font-size: $textsize;
+  font-size: inherit;
   font-weight: bold;
-  padding: $padding;
+  padding: 7px 18px;
   text-decoration: none;
   background-clip: padding-box;
 
@@ -373,35 +388,6 @@
     background-color: $base-color-active;
     cursor: pointer;
   }
-}
-
-// Flexible grid
-@function flex-grid($columns, $container-columns: $fg-max-columns) {
-  $width: $columns * $fg-column + ($columns - 1) * $fg-gutter;
-  $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;
-  @return percentage($width / $container-width);
-
-  @warn "The flex-grid function is deprecated and will be removed in the next major version release";
-}
-
-// Flexible gutter
-@function flex-gutter($container-columns: $fg-max-columns, $gutter: $fg-gutter) {
-  $container-width: $container-columns * $fg-column + ($container-columns - 1) * $fg-gutter;
-  @return percentage($gutter / $container-width);
-
-  @warn "The flex-gutter function is deprecated and will be removed in the next major version release";
-}
-
-@function grid-width($n) {
-  @return $n * $gw-column + ($n - 1) * $gw-gutter;
-
-  @warn "The grid-width function is deprecated and will be removed in the next major version release";
-}
-
-@function golden-ratio($value, $increment) {
-  @return modular-scale($increment, $value, $ratio: $golden);
-
-  @warn "The golden-ratio function is deprecated and will be removed in the next major version release. Please use the modular-scale function, instead.";
 }
 
 @mixin box-sizing($box) {
