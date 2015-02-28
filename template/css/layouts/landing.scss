@@ -42,6 +42,11 @@
     right: 6%;
     padding: 0;
   }
+  .btn {
+    @include media($medium-screen) {
+      float: left;
+    } 
+  }
 }
 
 .intro-right {
@@ -68,9 +73,9 @@
 
 .view-sect2 {
   @include media($medium-screen) {
-    display: table;
+    display: block;
   }
-  bottom: -47px;
+  top: 10px;
   display: none;
   left: 50%;
   margin-left: -40px;
@@ -92,8 +97,8 @@
 
     }
   }
-  > div {
-    float: right;
+  .down-text {
+    float: left;
     line-height: 63px;
     margin-left: 20px;
   }

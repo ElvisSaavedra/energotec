@@ -19,6 +19,12 @@ $(document).ready ->
       $(this).remove();
       return
 
+  $('#slides').hammer().on 'swipeleft', ->
+    $(this).superslides('animate', 'next')
+
+  $('#slides').hammer().on 'swiperight', ->
+    $(this).superslides('animate', 'prev')
+
   $(window).on 'resize':->
     resize()
 

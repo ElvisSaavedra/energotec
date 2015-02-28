@@ -22,6 +22,12 @@
         $(this).remove();
       });
     });
+    $('#slides').hammer().on('swipeleft', function() {
+      return $(this).superslides('animate', 'next');
+    });
+    $('#slides').hammer().on('swiperight', function() {
+      return $(this).superslides('animate', 'prev');
+    });
     $(window).on({
       'resize': function() {
         return resize();
