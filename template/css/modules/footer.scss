@@ -8,20 +8,39 @@
   background: $footer-background;
   padding: 80px 20px;
   width: 100%;
+  color: $footer-color;
 
   .footer-links {
     @include clearfix;
     margin-bottom: $base-spacing;
     text-transform: uppercase;
+      ul {
+      margin-bottom: $base-spacing * 2;
+
+      @include media($medium-screen) {
+        @include span-columns(4);
+        @include omega(4n);
+        @include clearfix;
+      }
+    }
   }
 
-  ul {
-    margin-bottom: $base-spacing * 2;
+  .footer-text {
+    @include clearfix;
+    margin-bottom: $base-spacing;
+      > div {
+      margin-bottom: $base-spacing * 2;
 
-    @include media($medium-screen) {
-      @include span-columns(4);
-      @include omega(4n);
-      @include clearfix;
+      @include media($medium-screen) {
+        @include span-columns(6);
+        @include clearfix;
+      }
+    }
+  }
+
+  .footer-data {
+    .fa {
+      color: $red;
     }
   }
 
@@ -62,7 +81,6 @@
   }
 
   li h3 {
-    color: $footer-color;
     font-size: 30px;
     font-weight: $normal;
   }  

@@ -104,7 +104,7 @@
           %a.button{:href => "javascript:void(0)"}
             %i.fa.fa-child
 
-    - (2...3).each do |i|
+    - (2...4).each do |i|
       %section.content-section
         contenido #{i}
 
@@ -149,6 +149,21 @@
                 %i.fa.fa-play
                 Youtube
 
-        %hr
-
-        %p Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.
+        .footer-text
+          .footer-data
+            %ul
+              %li
+                %i.fa.fa-map-marker
+                Calle Los Plásticos 204 - Urb. Vulcano Ate - Vitarte. Lima 03 Perú
+              %li
+                %i.fa.fa-phone
+                Central: (511) 348 7570
+              %li
+                %i.fa.fa-fax
+                Fax: (511) 3480750
+              %li
+                %i.fa.fa-envelope
+                E-mail:
+                %a{:href => "mailtoventas@energotecsac.com"} ventas@energotecsac.com
+          .footer-copyright
+            ENERGOTEC S.A.C. ©2007. Todos los derechos reservados.
